@@ -10,6 +10,7 @@ import books from "../assets/books.svg";
 import music from "../assets/music.svg";
 import tv from "../assets/tv.svg";
 import movies from "../assets/movies.svg";
+import "../styles/navbar.css"
 import { useState } from "react";
 
 export default function Navbar() {
@@ -53,6 +54,46 @@ export default function Navbar() {
     }
   }
 
+  const PrimaryMenu = [
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "home",
+      icon: home,
+      link: "/",
+    },
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "games",
+      icon: games,
+      link: "/games",
+    },
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "books",
+      icon: books,
+      link: "/books",
+    },
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "music",
+      icon: music,
+      link: "/music",
+    },
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "tv",
+      icon: tv,
+      link: "/tv",
+    },
+    {
+      primaryName: "secondary-nav-icon",
+      secondaryName: "movies",
+      icon: movies,
+      link: "/movies",
+    },
+  ];
+
+  const [active, SetActive] = useState(0)
   return (
     <>
       <div className="navigation-container">
@@ -118,7 +159,7 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <div className={`mobile-menu-container ${test}`}>
+        <div className={`search-menu-container ${test}`}>
           <form>
             <input name="search" id="nav-search" placeholder="Search"></input>
             <button className="search-btn" type="submit">
@@ -129,44 +170,20 @@ export default function Navbar() {
       </div>
       <nav className="secondary-navigation">
         <ul className="secondary-navigation-links">
-          <li className="secondary-navigation-link-item">
-            <img
-              className="secondary-nav-icon home"
-              alt="home"
-              src={home}
-            ></img>
-          </li>
-          <li className="secondary-navigation-link-item">
-            <img
-              className="secondary-nav-icon games"
-              alt="games"
-              src={games}
-            ></img>
-          </li>
-          <li className="secondary-navigation-link-item">
-            <img
-              className="secondary-nav-icon books"
-              alt="books"
-              src={books}
-            ></img>
-          </li>
-          <li className="secondary-navigation-link-item">
-            <img
-              className="secondary-nav-icon music"
-              alt="music"
-              src={music}
-            ></img>
-          </li>
-          <li className="secondary-navigation-link-item">
-            <img className="secondary-nav-icon tv" alt="tv" src={tv}></img>
-          </li>
-          <li className="secondary-navigation-link-item">
-            <img
-              className="secondary-nav-icon movies"
-              alt="movies"
-              src={movies}
-            ></img>
-          </li>
+          {PrimaryMenu.map((menu, i) => {
+            return (
+            <a key={i}
+            href={menu.link} onClick={() => SetActive(i)}>
+              <li className="secondary-navigation-link-item">
+                  <img
+                    className={`secondary-nav-icon ${menu.secondaryName}`}
+                    alt={menu.secondaryName}
+                    src={menu.icon}
+                  ></img>
+              </li>
+              </a>
+            );
+          })}
         </ul>
       </nav>
     </>
