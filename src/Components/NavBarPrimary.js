@@ -58,36 +58,42 @@ export default function Navbar() {
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "home",
+      className: 'home-item',
       icon: home,
       link: "/",
     },
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "games",
+      className: 'games-item',
       icon: games,
       link: "/games",
     },
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "books",
+      className: 'books-item',
       icon: books,
       link: "/books",
     },
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "music",
+      className: 'music-item',
       icon: music,
       link: "/music",
     },
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "tv",
+      className: 'tv-item',
       icon: tv,
       link: "/tv",
     },
     {
       primaryName: "secondary-nav-icon",
       secondaryName: "movies",
+      className: 'movies-item',
       icon: movies,
       link: "/movies",
     },
@@ -174,7 +180,7 @@ export default function Navbar() {
             return (
             <a key={i}
             href={menu.link} onClick={() => SetActive(i)}>
-              <li className="secondary-navigation-link-item">
+              <li className={`secondary-navigation-link-item ${menu.className}`}>
                   <img
                     className={`secondary-nav-icon ${menu.secondaryName}`}
                     alt={menu.secondaryName}
